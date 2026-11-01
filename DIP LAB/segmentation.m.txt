@@ -1,0 +1,28 @@
+clc;
+clear;
+close all;
+img = imread('img1.jpg');
+gray = rgb2gray(img);
+threshold = 20;
+mask = gray > threshold;
+mask = bwareaopen(mask,500);
+boundary = bwperim(mask);
+marked_img = img;
+R = marked_img(:,:,1);
+G = marked_img(:,:,2);
+B=marked_img(:,:,3);
+R(boundary) = 0;
+G(boundary) = 255;
+B(boundary) = 0;
+marked_img(:,:,1) = R;
+marked_img(:,:,2) = G;
+marked_img(:,:,3) = B;
+subplot(1,3,1);
+imshow(img);
+title('Original Image');
+subplot(1,3,2);
+imshow(mask);
+title('Segmented Region');
+subplot(1,3,3);
+imshow(marked_img);
+title('Segmented Image with Boundary')

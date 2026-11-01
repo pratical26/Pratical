@@ -1,0 +1,18 @@
+rgbImg=imread('img1.jpg');
+hsvImg=rgb2hsv(rgbImg);
+figure;
+subplot(2,2,1);
+imshow(rgbImg);
+title('original image');
+subplot(2,2,2);
+imshow (hsvImg);
+title('HSV IMAGE');
+subplot(2,2,3);
+imshow(hsvImg (:,:,1));
+title('HUE (H)');
+subplot(2,2,4);
+imshow(hsvImg(:,:,2));
+title('saturation(S)');
+figure;
+imshow(hsvImg(:,:,3));
+title('Value (v)');
